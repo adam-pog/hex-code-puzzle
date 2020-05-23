@@ -1,0 +1,30 @@
+.Buffer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.bufferText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgba(25,25,25,.5);
+}
+
+.blink {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1}
+  50% {opacity: 0}
+  100% {opacity: 1}
+}

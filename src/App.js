@@ -1,5 +1,6 @@
 import React from 'react';
 import HexRow from './HexRow'
+import Buffer from './Buffer'
 import './App.css';
 
 class App extends React.Component {
@@ -52,7 +53,7 @@ class App extends React.Component {
       highlightCol = null;
     }
 
-    if (buffer.length === 6) {
+    if (buffer.length === 7) {
       this.reset();
     } else {
       this.setState({
@@ -66,27 +67,30 @@ class App extends React.Component {
 
   render() {
     return (
-      <table className="App">
-        <tbody>
-          {
-            this.state.board.map((hexValues, i) => (
-              <HexRow
-                hexValues={hexValues}
-                key={i}
-                row={i}
-                onClick={(row, col) => this.hexClick(row, col)}
-                highlightRow={this.state.highlightRow}
-                highlightCol={this.state.highlightCol}
-                >
-              </HexRow>
-            ))
-          }
-          <HexRow
-            hexValues={this.state.buffer}
-            >
-          </HexRow>
-        </tbody>
-      </table>
+      <div className="App">
+        <table>
+          <tbody>
+            {
+              this.state.board.map((hexValues, i) => (
+                <HexRow
+                  hexValues={hexValues}
+                  key={i}
+                  row={i}
+                  onClick={(row, col) => this.hexClick(row, col)}
+                  highlightRow={this.state.highlightRow}
+                  highlightCol={this.state.highlightCol}
+                  >
+                </HexRow>
+              ))
+            }
+          </tbody>
+        </table>
+        <Buffer
+          buffer={this.state.buffer}
+          size={6}
+        >
+        </Buffer>
+      </div>
     )
   }
 }
