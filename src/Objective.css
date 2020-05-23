@@ -1,0 +1,23 @@
+.Objective {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+
+.ObjectiveTextContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgba(25,25,25,.5);
+}
+
+.objectiveHighlight {
+  background-color: green;
+}
