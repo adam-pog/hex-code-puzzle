@@ -6,12 +6,13 @@ function HexRow(props) {
   return (
     <div className="HexRow">
       {
-        props.row.map((hexValue, i) => (
+        props.hexValues.map((hexValue, i) => (
           <Hex
             value={hexValue}
             key={i}
             onClick={props.onClick}
-            index={i}
+            row={props.row}
+            col={i}
           >
           </Hex>
         ))

@@ -24,22 +24,25 @@ class App extends React.Component {
       .padStart(2,'0')
   }
 
-  hexClick(value) {
-    console.log(value)
+  hexClick(row, col) {
+    const board = this.state.board.slice();
+    board[row][col] = 'XX'
+
+    this.setState({
+      board: board
+    })
   }
 
   render() {
-    console.log('rendered')
-    console.log(this.state.board)
     return (
       <div className="App">
         {
-          this.state.board.map((row, i) => (
+          this.state.board.map((hexValues, i) => (
             <HexRow
-              row={row}
+              hexValues={hexValues}
               key={i}
-              index={i}
-              onClick={(value) => this.hexClick(value)}
+              row={i}
+              onClick={(row, col) => this.hexClick(row, col)}
             >
             </HexRow>
           ))

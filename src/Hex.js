@@ -5,7 +5,7 @@ function Hex(props) {
   return (
     <ul
       className="Hex"
-      onClick={() => props.onClick(props.index)}
+      onClick={() => props.onClick(props.row, props.col)}
     >
       {props.value}
     </ul>
