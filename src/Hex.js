@@ -4,8 +4,9 @@ import './Hex.css';
 function Hex(props) {
   return (
     <ul
-      className="Hex"
+      className={"Hex " + props.className}
       onClick={() => props.onClick(props.row, props.col)}
+      disabled={'disabled'}
     >
       {props.value}
     </ul>

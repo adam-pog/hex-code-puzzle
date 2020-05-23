@@ -13,6 +13,7 @@ function HexRow(props) {
             onClick={props.onClick}
             row={props.row}
             col={i}
+            className={hexValue === '\u2022' ?  'greyText' : ''}
           >
           </Hex>
         ))

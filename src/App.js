@@ -26,7 +26,7 @@ class App extends React.Component {
 
   hexClick(row, col) {
     const board = this.state.board.slice();
-    board[row][col] = 'XX'
+    board[row][col] = '\u2022'
 
     this.setState({
       board: board
