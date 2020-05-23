@@ -3,8 +3,19 @@ import HexRow from './HexRow'
 import './App.css';
 
 class App extends React.Component {
-  state = {
-    board: this.generate_board()
+  state = this.initialState()
+
+  initialState() {
+    return {
+      board: this.generate_board(),
+      highlightRow: 0,
+      highlightCol: null,
+      buffer: []
+    }
+  }
+
+  reset() {
+    this.setState(this.initialState())
   }
 
   generate_board() {
@@ -26,28 +37,56 @@ class App extends React.Component {
 
   hexClick(row, col) {
     const board = this.state.board.slice();
-    board[row][col] = '\u2022'
+    const buffer = this.state.buffer.slice();
+    let highlightRow = this.state.highlightRow;
+    let highlightCol = this.state.highlightCol;
 
-    this.setState({
-      board: board
-    })
+    buffer.push(board[row][col]);
+    board[row][col] = null;
+
+    if (this.state.highlightRow != null) {
+      highlightRow = null;
+      highlightCol = col;
+    } else {
+      highlightRow = row;
+      highlightCol = null;
+    }
+
+    if (buffer.length === 6) {
+      this.reset();
+    } else {
+      this.setState({
+        board,
+        highlightRow,
+        highlightCol,
+        buffer
+      })
+    }
   }
 
   render() {
     return (
-      <div className="App">
-        {
-          this.state.board.map((hexValues, i) => (
-            <HexRow
-              hexValues={hexValues}
-              key={i}
-              row={i}
-              onClick={(row, col) => this.hexClick(row, col)}
+      <table className="App">
+        <tbody>
+          {
+            this.state.board.map((hexValues, i) => (
+              <HexRow
+                hexValues={hexValues}
+                key={i}
+                row={i}
+                onClick={(row, col) => this.hexClick(row, col)}
+                highlightRow={this.state.highlightRow}
+                highlightCol={this.state.highlightCol}
+                >
+              </HexRow>
+            ))
+          }
+          <HexRow
+            hexValues={this.state.buffer}
             >
-            </HexRow>
-          ))
-        }
-      </div>
+          </HexRow>
+        </tbody>
+      </table>
     )
   }
 }

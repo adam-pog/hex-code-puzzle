@@ -3,13 +3,12 @@ import './Hex.css';
 
 function Hex(props) {
   return (
-    <ul
-      className={"Hex " + props.className}
-      onClick={() => props.onClick(props.row, props.col)}
-      disabled={'disabled'}
+    <td
+      className={"Hex " + props.hexClass}
+      onClick={() => props.onClick && props.onClick(props.row, props.col)}
     >
-      {props.value}
-    </ul>
+      <p className={props.textClass}>{props.value || '\u2022'}</p>
+    </td>
   );
 }
 
