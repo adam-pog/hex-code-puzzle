@@ -22,7 +22,8 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.primaryObjectiveProgress.length === this.state.primaryObjective.length) {
+    if (this.state.primaryObjectiveProgress.length ===
+        this.state.primaryObjective.length) {
       console.log('Data retrieved')
     } else {
       console.log(this.state.primaryObjectiveProgress)
@@ -38,7 +39,7 @@ class App extends React.Component {
 
     return Array(5).fill().map(() =>
       Array(5).fill().map(() =>
-        hexValues[Math.floor(Math.random() * 5)]
+        hexValues[this.randomIndex()]
       )
     )
   }
@@ -51,12 +52,10 @@ class App extends React.Component {
   }
 
   generatePrimaryObjective(board) {
-    let row1 = Math.floor(Math.random() * 5)
-    let col1 = Math.floor(Math.random() * 5)
-    let row2 = Math.floor(Math.random() * 5)
-    let col2 = Math.floor(Math.random() * 5)
-
-    return [board[row1][col1], board[row2][col2]]
+    return [
+      board[this.randomIndex()][this.randomIndex()],
+      board[this.randomIndex()][this.randomIndex()]
+    ]
   }
 
   hexClick(row, col) {
@@ -93,12 +92,15 @@ class App extends React.Component {
 
   updatePrimaryObjectiveProgress(selection) {
     let primaryObjectiveProgress = this.state.primaryObjectiveProgress.slice()
-    const currentGoal = primaryObjectiveProgress.slice(-1)
+    const currentGoal = this.state.primaryObjective[
+      this.state.primaryObjectiveProgress.length
+    ];
 
-    if (primaryObjectiveProgress.length === this.state.primaryObjective.length) {
+    if (primaryObjectiveProgress.length ===
+        this.state.primaryObjective.length) {
       return primaryObjectiveProgress
     }
-    else if (selection === this.currentPrimaryObjectiveGoal()) {
+    else if (selection === currentGoal) {
       primaryObjectiveProgress.push(selection)
     }
     else if(selection !== this.state.primaryObjective[0]) {
@@ -108,8 +110,8 @@ class App extends React.Component {
     return primaryObjectiveProgress
   }
 
-  currentPrimaryObjectiveGoal() {
-    return this.state.primaryObjective[this.state.primaryObjectiveProgress.length];
+  randomIndex() {
+    return Math.floor(Math.random() * 5)
   }
 
   render() {
