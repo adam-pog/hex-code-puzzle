@@ -22,9 +22,8 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.primaryObjectiveProgress.length ===
-        this.state.primaryObjective.length) {
-      console.log('Data retrieved')
+    if (this.isComplete()) {
+      alert('Data Recieved')
     } else {
       console.log(this.state.primaryObjectiveProgress)
     }
@@ -68,17 +67,9 @@ class App extends React.Component {
     buffer.push(selection);
     board[row][col] = null;
 
-    if (buffer.length === 7) {
-      this.reset();
-    } else {
-      this.setState({
-        board,
-        highlightRow,
-        highlightCol,
-        buffer,
-        primaryObjectiveProgress
-      })
-    }
+    this.setState({
+      board, highlightRow, highlightCol, buffer, primaryObjectiveProgress
+    })
   }
 
   refreshHighlights(row, col) {
@@ -96,11 +87,7 @@ class App extends React.Component {
       this.state.primaryObjectiveProgress.length
     ];
 
-    if (primaryObjectiveProgress.length ===
-        this.state.primaryObjective.length) {
-      return primaryObjectiveProgress
-    }
-    else if (selection === currentGoal) {
+    if (selection === currentGoal) {
       primaryObjectiveProgress.push(selection)
     }
     else if(selection !== this.state.primaryObjective[0]) {
@@ -114,40 +101,54 @@ class App extends React.Component {
     return Math.floor(Math.random() * 5)
   }
 
+  isComplete() {
+    return this.state.primaryObjectiveProgress.length ===
+      this.state.primaryObjective.length
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className='primaryObjective'>
-          <Objective
-            objective={this.state.primaryObjective}
-            progress={this.state.primaryObjectiveProgress}
-            >
-          </Objective>
+      <div>
+        <div className='background'>
+          <video autoPlay muted loop className='video'>
+            <source src="background_hd.mp4" type="video/mp4"/>
+          </video>
         </div>
+        <div className="App">
+          <div className="board">
+            <div className='primaryObjective'>
+              <Objective
+                objective={this.state.primaryObjective}
+                progress={this.state.primaryObjectiveProgress}
+                >
+              </Objective>
+            </div>
 
-        <table>
-          <tbody>
-            {
-              this.state.board.map((hexValues, i) => (
-                <HexRow
-                  hexValues={hexValues}
-                  key={i}
-                  row={i}
-                  onClick={(row, col) => this.hexClick(row, col)}
-                  highlightRow={this.state.highlightRow}
-                  highlightCol={this.state.highlightCol}
-                  >
-                </HexRow>
-              ))
-            }
-          </tbody>
-        </table>
+            <table>
+              <tbody>
+                {
+                  this.state.board.map((hexValues, i) => (
+                    <HexRow
+                      hexValues={hexValues}
+                      key={i}
+                      row={i}
+                      onClick={(row, col) => this.hexClick(row, col)}
+                      highlightRow={this.state.highlightRow}
+                      highlightCol={this.state.highlightCol}
+                      >
+                    </HexRow>
+                  ))
+                }
+              </tbody>
+            </table>
 
-        <Buffer
-          buffer={this.state.buffer}
-          size={6}
-        >
-        </Buffer>
+            <Buffer
+              buffer={this.state.buffer}
+              size={6}
+              >
+            </Buffer>
+          </div>
+        </div>
       </div>
     )
   }
