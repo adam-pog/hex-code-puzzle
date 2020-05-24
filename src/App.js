@@ -17,12 +17,12 @@ class App extends React.Component {
       highlightCol: null,
       buffer: [],
       primaryObjective: primary,
-      primaryObjectiveProgress: primary.slice().reverse()
+      primaryObjectiveProgress: []
     }
   }
 
   componentDidUpdate() {
-    if (this.state.primaryObjectiveProgress.length === 0) {
+    if (this.state.primaryObjectiveProgress.length === this.state.primaryObjective.length) {
       console.log('Data retrieved')
     } else {
       console.log(this.state.primaryObjectiveProgress)
@@ -62,11 +62,11 @@ class App extends React.Component {
   hexClick(row, col) {
     const board = this.state.board.slice();
     const buffer = this.state.buffer.slice();
-    buffer.push(board[row][col]);
-
+    const selection = board[row][col];
     const [highlightRow, highlightCol] = this.refreshHighlights(row, col)
-    let primaryObjectiveProgress = this.updatePrimaryObjectiveProgress(buffer)
+    let primaryObjectiveProgress = this.updatePrimaryObjectiveProgress(selection)
 
+    buffer.push(selection);
     board[row][col] = null;
 
     if (buffer.length === 7) {
@@ -91,21 +91,25 @@ class App extends React.Component {
   }
 
 
-  updatePrimaryObjectiveProgress(buffer) {
+  updatePrimaryObjectiveProgress(selection) {
     let primaryObjectiveProgress = this.state.primaryObjectiveProgress.slice()
-    const [selection] = buffer.slice(-1)
-    const [currentGoal] = primaryObjectiveProgress.slice(-1)
+    const currentGoal = primaryObjectiveProgress.slice(-1)
 
-    if (primaryObjectiveProgress.length === 0) {
+    if (primaryObjectiveProgress.length === this.state.primaryObjective.length) {
       return primaryObjectiveProgress
     }
-    else if (selection === currentGoal) {
-      primaryObjectiveProgress.pop()
-    } else {
-      primaryObjectiveProgress = this.state.primaryObjective.slice().reverse()
+    else if (selection === this.currentPrimaryObjectiveGoal()) {
+      primaryObjectiveProgress.push(selection)
+    }
+    else if(selection !== this.state.primaryObjective[0]) {
+      primaryObjectiveProgress = []
     }
 
     return primaryObjectiveProgress
+  }
+
+  currentPrimaryObjectiveGoal() {
+    return this.state.primaryObjective[this.state.primaryObjectiveProgress.length];
   }
 
   render() {

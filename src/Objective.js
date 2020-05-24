@@ -6,13 +6,13 @@ function Objective(props) {
     <div className="Objective">
       {
         props.objective.map((value,i) => {
-            let className = props.progress.includes(value) ? '' : 'objectiveHighlight'
+          let className = props.progress[i] === value ? 'objectiveHighlight' : ''
 
-            return(
-              <div className={"ObjectiveTextContainer " + className} key={i}>
-                <p key={i}>{value}</p>
-              </div>
-            )
+          return(
+            <div className={"ObjectiveTextContainer " + className} key={i}>
+              <p key={i}>{value}</p>
+            </div>
+          )
         })
       }
     </div>
