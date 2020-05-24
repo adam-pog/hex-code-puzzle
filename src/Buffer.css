@@ -16,7 +16,9 @@
   padding-right: 40px;
   margin-left: 10px;
   margin-right: 10px;
-  background-color: rgba(25,25,25,.5);
+  /* background-color: rgba(25,25,25,.5); */
+  background-color: rgba(65,65,45,.6);
+
 }
 
 .blink {

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Hex.css';
+import config from './config'
 
 function Hex(props) {
   return (
@@ -7,7 +8,7 @@ function Hex(props) {
       className={"Hex " + props.hexClass}
       onClick={() => props.onClick && props.onClick(props.row, props.col)}
     >
-      <p className={props.textClass}>{props.value || '\u2022'}</p>
+      <p className={props.textClass}>{props.value || config.selectedChar}</p>
     </td>
   );
 }

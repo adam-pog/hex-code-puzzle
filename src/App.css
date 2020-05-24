@@ -18,8 +18,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px;
-  background-color: rgba(20,20,20,.5);
+  padding: 20px;
+  /* background-color: rgba(70,70,45,.7); */
 }
 
 p {
@@ -47,11 +47,6 @@ p {
   }
 }
 
-.highlight {
-  background-color: rgba(60,20,20,.5);
-  background-size: 100%
-}
-
 .primaryObjective {
   margin-bottom: 80px;
 }
@@ -61,8 +56,7 @@ p {
   position:absolute;
   width: 100%;
   height: 100%;
-  background-color: #282c34;
-  color: rgba(20,20,20,.5);
+  background-color: #171b23;
 }
 
 .video {

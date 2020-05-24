@@ -2,6 +2,8 @@ import React from 'react';
 import HexRow from './HexRow'
 import Buffer from './Buffer'
 import Objective from './Objective'
+import Particles from 'react-particles-js';
+import config from './config'
 import './App.css';
 
 class App extends React.Component {
@@ -34,10 +36,10 @@ class App extends React.Component {
   }
 
   generateBoard() {
-    let hexValues = Array(5).fill().map(() => this.randomHex())
+    let hexValues = Array(config.rows).fill().map(() => this.randomHex())
 
-    return Array(5).fill().map(() =>
-      Array(5).fill().map(() =>
+    return Array(config.rows).fill().map(() =>
+      Array(config.columns).fill().map(() =>
         hexValues[this.randomIndex()]
       )
     )
@@ -65,7 +67,7 @@ class App extends React.Component {
     let primaryObjectiveProgress = this.updatePrimaryObjectiveProgress(selection)
 
     buffer.push(selection);
-    board[row][col] = null;
+    board[row][col] = config.selectedChar;
 
     this.setState({
       board, highlightRow, highlightCol, buffer, primaryObjectiveProgress
@@ -110,9 +112,25 @@ class App extends React.Component {
     return (
       <div>
         <div className='background'>
-          <video autoPlay muted loop className='video'>
-            <source src="background_hd.mp4" type="video/mp4"/>
-          </video>
+          <Particles params={
+            {
+              particles: {
+                number: {
+                  value: 75,
+                  density: {
+                    enable: true
+                  }
+                },
+                color: {
+                  value: '#ffffff'
+                },
+                line_linked: {
+                  color: '#aaaa44',
+                  width: 2
+                }
+              }
+            }
+          }/>
         </div>
         <div className="App">
           <div className="board">
