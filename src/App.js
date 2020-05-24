@@ -1,7 +1,7 @@
 import React from 'react';
-import HexRow from './HexRow'
+import HexRow from './HexRow/HexRow'
 import Buffer from './Buffer'
-import Objective from './Objective'
+import Objective from './Objective/Objective'
 import Particles from 'react-particles-js';
 import config from './config'
 import './App.css';

@@ -1,7 +1,7 @@
 import React from 'react';
 import './HexRow.css';
-import Hex from './Hex'
-import config from './config'
+import Hex from './Hex/Hex'
+import config from '../config'
 
 function bottomHexClass(props, column) {
   if(props.highlightCol === column && props.row === config.rows - 1) {

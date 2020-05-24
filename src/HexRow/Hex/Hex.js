@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hex.css';
-import config from './config'
+import config from '../../config'
 
 function Hex(props) {
   return (
