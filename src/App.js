@@ -19,13 +19,14 @@ class App extends React.Component {
       highlightCol: null,
       buffer: [],
       primaryObjective: primary,
-      primaryObjectiveProgress: []
+      primaryObjectiveProgress: [],
+      success: false
     }
   }
 
   componentDidUpdate() {
     if (this.isComplete()) {
-      alert('Data Recieved')
+      console.log('Data Recieved')
     } else {
       console.log(this.state.primaryObjectiveProgress)
     }
@@ -53,9 +54,12 @@ class App extends React.Component {
   }
 
   generatePrimaryObjective(board) {
+    let index = this.randomIndex()
+    // use the same column index twice to guarantee the main objective
+    // is achievable
     return [
-      board[this.randomIndex()][this.randomIndex()],
-      board[this.randomIndex()][this.randomIndex()]
+      board[this.randomIndex()][index],
+      board[this.randomIndex()][index]
     ]
   }
 
@@ -70,7 +74,9 @@ class App extends React.Component {
     board[row][col] = config.selectedChar;
 
     this.setState({
-      board, highlightRow, highlightCol, buffer, primaryObjectiveProgress
+      board, highlightRow, highlightCol, buffer, primaryObjectiveProgress,
+      success: primaryObjectiveProgress.length ===
+        this.state.primaryObjective.length
     })
   }
 
@@ -142,7 +148,7 @@ class App extends React.Component {
               </Objective>
             </div>
 
-            <table>
+            <table className={'table ' + (this.state.success ? 'terminate' : '')}>
               <tbody>
                 {
                   this.state.board.map((hexValues, i) => (
@@ -150,7 +156,11 @@ class App extends React.Component {
                       hexValues={hexValues}
                       key={i}
                       row={i}
-                      onClick={(row, col) => this.hexClick(row, col)}
+                      onClick={
+                        this.state.success ?
+                          null :
+                          (row, col) => this.hexClick(row, col)
+                      }
                       highlightRow={this.state.highlightRow}
                       highlightCol={this.state.highlightCol}
                       >
@@ -159,6 +169,11 @@ class App extends React.Component {
                 }
               </tbody>
             </table>
+
+            {
+              this.state.success &&
+              <button onClick={() => this.reset()}>Reboot</button>
+            }
 
             <Buffer
               buffer={this.state.buffer}

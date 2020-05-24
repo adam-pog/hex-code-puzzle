@@ -20,5 +20,6 @@
 }
 
 .objectiveHighlight {
-  background-color: green;
+  background-color: rgba(0,128,0,0.6);
+  /* background-color: green; */
 }
