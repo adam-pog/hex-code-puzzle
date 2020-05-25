@@ -4,7 +4,7 @@ import Buffer from './Buffer'
 import Objective from './Objective/Objective'
 import Particles from 'react-particles-js';
 import config from './config'
-import './App.css';
+import './App.scss';
 
 class App extends React.Component {
   state = this.initialState()
@@ -170,16 +170,25 @@ class App extends React.Component {
                 }
               </tbody>
             </table>
+            {
+              this.state.success &&
+              <h1 className='successText glitch' data-text="ACCESS GRANTED">
+                ACCESS GRANTED
+              </h1>
+            }
 
             {
               this.state.success &&
-              <button onClick={() => this.reset()}>Reboot</button>
+              <h3 className='reboot reboot-glitch' onClick={() => this.reset()}>
+                Reboot
+              </h3>
             }
 
             <Buffer
               buffer={this.state.buffer}
               size={6}
-              >
+              className={(this.state.success ? 'terminate' : '')}
+            >
             </Buffer>
           </div>
         </div>

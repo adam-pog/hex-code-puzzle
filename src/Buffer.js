@@ -7,7 +7,7 @@ function Buffer(props) {
       {
         Array(props.size).fill().map((_,i) => {
             return(
-              <div className="bufferText" key={i}>
+              <div className={"bufferText " +  props.className}key={i}>
                 {
                   props.buffer.length === i &&
                     <p key={i} className='blink'>{'|'}</p>

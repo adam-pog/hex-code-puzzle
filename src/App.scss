@@ -1,0 +1,158 @@
+.App {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #ffffffdd;
+  cursor: default;
+  user-select: none;
+}
+
+.board {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  /* background-color: rgba(70,70,45,.7); */
+}
+
+.table {
+  background-color: #11111180;
+  border-radius: 10px;
+  box-shadow: 15px 15px 10px rgba(0,0,0,0.5);
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.primaryObjective {
+  margin-bottom: 80px;
+}
+
+.background {
+  z-index: -1;
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #171b23;
+}
+
+#tsparticles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.terminate {
+  animation: terminate 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.reboot {
+  color: #A8554F80;
+  padding: 5px;
+  border: 3px solid #A8554F80;
+  border-radius: 10px;
+  outline: none;
+  position: absolute;
+  bottom: 10%;
+}
+
+.reboot:hover{
+  background-color: #A8554F80;
+  color: #ddddddaa;
+}
+
+@keyframes terminate {
+  0% {transform: scaleY(1)}
+  100% { transform: scaleY(0) }
+}
+
+.successText {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 46%;
+  animation: success 0.4s;
+  animation-fill-mode: forwards;
+  color: #3bc70240
+}
+
+@keyframes success {
+  0% {transform: scaleX(0)}
+  50% { transform: scaleX(0)}
+  100% { transform: scaleX(1) }
+}
+
+// glitch effect from the codepen by Lucas Bebber: https://codepen.io/lbebber/pen/ypgql
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      clip-path: inset(#{$top}% 0 #{$bottom}%  0);
+    }
+  }
+}
+
+.glitch::after {
+  display: flex;
+  left: 2px;
+  align-items: center;
+  width: 1000px;
+  content: attr(data-text);
+  color: #3bc70280;
+  overflow: hidden;
+  position: absolute;
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch::before {
+  display: flex;
+  left: -2px;
+  align-items: center;
+  width: 1000px;
+  content: attr(data-text);
+  position: absolute;
+  color: #3bc70280;
+  overflow: hidden;
+  animation: noise-anim 15s infinite linear alternate-reverse;
+}
