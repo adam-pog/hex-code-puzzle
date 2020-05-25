@@ -33,3 +33,23 @@
   50% {opacity: 0}
   100% {opacity: 1}
 }
+
+.onBoot-buffer {
+  animation: onBoot-buffer 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.terminate-buffer {
+  animation: terminate-buffer 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes onBoot-buffer {
+  0% {transform: scaleX(0)}
+  100% { transform: scaleX(1) }
+}
+
+@keyframes terminate-buffer {
+  0% {transform: scaleX(1)}
+  100% { transform: scaleX(0) }
+}

@@ -30,6 +30,16 @@
   box-shadow: 15px 15px 10px rgba(0,0,0,0.5);
 }
 
+.onBoot {
+  animation: onBoot 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes onBoot {
+  0% {transform: scaleY(0)}
+  100% { transform: scaleY(1) }
+}
+
 p {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -85,6 +95,11 @@ p {
   animation-fill-mode: forwards;
 }
 
+@keyframes terminate {
+  0% {transform: scaleY(1)}
+  100% { transform: scaleY(0) }
+}
+
 .reboot {
   color: #A8554F80;
   padding: 5px;
@@ -98,11 +113,6 @@ p {
 .reboot:hover{
   background-color: #A8554F80;
   color: #ddddddaa;
-}
-
-@keyframes terminate {
-  0% {transform: scaleY(1)}
-  100% { transform: scaleY(0) }
 }
 
 .successText {

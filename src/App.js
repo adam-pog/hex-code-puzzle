@@ -149,7 +149,7 @@ class App extends React.Component {
               </Objective>
             </div>
 
-            <table className={'table ' + (this.state.success ? 'terminate' : '')}>
+            <table className={'table onBoot ' + (this.state.success ? 'terminate' : '')}>
               <tbody>
                 {
                   this.state.board.map((hexValues, i) => (
@@ -187,7 +187,7 @@ class App extends React.Component {
             <Buffer
               buffer={this.state.buffer}
               size={6}
-              className={(this.state.success ? 'terminate' : '')}
+              className={(this.state.success ? 'terminate-buffer' : '')}
             >
             </Buffer>
           </div>
