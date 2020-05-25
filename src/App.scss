@@ -31,13 +31,23 @@
 }
 
 .onBoot {
-  animation: onBoot 0.2s;
+  animation: onBoot 0.5s;
   animation-fill-mode: forwards;
 }
 
 @keyframes onBoot {
   0% {transform: scaleY(0)}
   100% { transform: scaleY(1) }
+}
+
+.terminate {
+  animation: terminate 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes terminate {
+  0% {transform: scaleY(1)}
+  100% { transform: scaleY(0) }
 }
 
 p {
@@ -90,16 +100,6 @@ p {
   object-fit: cover;
 }
 
-.terminate {
-  animation: terminate 0.2s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes terminate {
-  0% {transform: scaleY(1)}
-  100% { transform: scaleY(0) }
-}
-
 .reboot {
   color: #A8554F80;
   padding: 5px;
@@ -115,20 +115,27 @@ p {
   color: #ddddddaa;
 }
 
-.successText {
+.terminateText {
   display: flex;
   align-items: center;
   position: absolute;
   top: 46%;
-  animation: success 0.4s;
+  animation: success 0.5s;
   animation-fill-mode: forwards;
+}
+
+.successText {
   color: #3bc70240
 }
 
+.failureText {
+  color: #A8554F40
+}
+
 @keyframes success {
-  0% {transform: scaleX(0)}
-  50% { transform: scaleX(0)}
-  100% { transform: scaleX(1) }
+  0% {opacity: 0}
+  50% {opacity: 0}
+  100% {opacity: 1 }
 }
 
 // glitch effect from the codepen by Lucas Bebber: https://codepen.io/lbebber/pen/ypgql
@@ -149,7 +156,6 @@ p {
   align-items: center;
   width: 1000px;
   content: attr(data-text);
-  color: #3bc70280;
   overflow: hidden;
   position: absolute;
   animation: noise-anim 2s infinite linear alternate-reverse;
@@ -162,7 +168,6 @@ p {
   width: 1000px;
   content: attr(data-text);
   position: absolute;
-  color: #3bc70280;
   overflow: hidden;
   animation: noise-anim 15s infinite linear alternate-reverse;
 }

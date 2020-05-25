@@ -1,6 +1,6 @@
 import React from 'react';
 import HexRow from './HexRow/HexRow'
-import Buffer from './Buffer'
+import Buffer from './Buffer/Buffer'
 import Objective from './Objective/Objective'
 import Particles from 'react-particles-js';
 import config from './config'
@@ -22,14 +22,6 @@ class App extends React.Component {
       primaryObjectiveProgress: [],
       success: false,
       failure: false
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.isComplete()) {
-      console.log('Data Recieved')
-    } else {
-      console.log(this.state.primaryObjectiveProgress)
     }
   }
 
@@ -55,12 +47,22 @@ class App extends React.Component {
   }
 
   generatePrimaryObjective(board) {
-    let index = this.randomIndex()
+    let availableIndices = Array(5).fill().map((_, i) => (i))
+    const column = this.randomIndex()
+    const row1 = this.randomIndex()
+
+    // make sure the same row is not selected to ensure the main objective is
+    // achievable
+    availableIndices = availableIndices.filter((n,_) => ( n !== row1 ))
+    const row2 = availableIndices[
+      Math.floor(Math.random() * availableIndices.length)
+    ]
+
     // use the same column index twice to guarantee the main objective
     // is achievable
     return [
-      board[this.randomIndex()][index],
-      board[this.randomIndex()][index]
+      board[row1][column],
+      board[row2][column]
     ]
   }
 
@@ -70,14 +72,16 @@ class App extends React.Component {
     const selection = board[row][col];
     const [highlightRow, highlightCol] = this.refreshHighlights(row, col)
     let primaryObjectiveProgress = this.updatePrimaryObjectiveProgress(selection)
+    let success = primaryObjectiveProgress.length ===
+      this.state.primaryObjective.length
 
     buffer.push(selection);
     board[row][col] = config.selectedChar;
 
     this.setState({
       board, highlightRow, highlightCol, buffer, primaryObjectiveProgress,
-      success: primaryObjectiveProgress.length ===
-        this.state.primaryObjective.length
+      success,
+      failure: !success && buffer.length === config.bufferLength
     })
   }
 
@@ -107,12 +111,11 @@ class App extends React.Component {
   }
 
   randomIndex() {
-    return Math.floor(Math.random() * 5)
+    return Math.floor(Math.random() * config.rows)
   }
 
-  isComplete() {
-    return this.state.primaryObjectiveProgress.length ===
-      this.state.primaryObjective.length
+  terminate() {
+    return this.state.success || this.state.failure
   }
 
   render() {
@@ -149,7 +152,7 @@ class App extends React.Component {
               </Objective>
             </div>
 
-            <table className={'table onBoot ' + (this.state.success ? 'terminate' : '')}>
+            <table className={'table onBoot ' + (this.terminate() ? 'terminate' : '')}>
               <tbody>
                 {
                   this.state.board.map((hexValues, i) => (
@@ -158,7 +161,7 @@ class App extends React.Component {
                       key={i}
                       row={i}
                       onClick={
-                        this.state.success ?
+                        this.terminate() ?
                           null :
                           (row, col) => this.hexClick(row, col)
                       }
@@ -172,22 +175,29 @@ class App extends React.Component {
             </table>
             {
               this.state.success &&
-              <h1 className='successText glitch' data-text="ACCESS GRANTED">
+              <h1 className='successText glitch terminateText' data-text="ACCESS GRANTED">
                 ACCESS GRANTED
               </h1>
             }
 
             {
-              this.state.success &&
-              <h3 className='reboot reboot-glitch' onClick={() => this.reset()}>
+              this.state.failure &&
+              <h1 className='failureText glitch terminateText' data-text="ACCESS DENIED">
+                ACCESS DENIED
+              </h1>
+            }
+
+            {
+              this.terminate() &&
+              <h3 className='reboot' onClick={() => this.reset()}>
                 Reboot
               </h3>
             }
 
             <Buffer
               buffer={this.state.buffer}
-              size={6}
-              className={(this.state.success ? 'terminate-buffer' : '')}
+              size={config.bufferLength}
+              className={(this.terminate() ? 'terminate-buffer' : '')}
             >
             </Buffer>
           </div>

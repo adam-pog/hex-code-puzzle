@@ -35,12 +35,12 @@
 }
 
 .onBoot-buffer {
-  animation: onBoot-buffer 0.2s;
+  animation: onBoot-buffer 0.5s;
   animation-fill-mode: forwards;
 }
 
 .terminate-buffer {
-  animation: terminate-buffer 0.2s;
+  animation: terminate-buffer 0.5s;
   animation-fill-mode: forwards;
 }
 
