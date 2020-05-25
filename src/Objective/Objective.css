@@ -16,10 +16,19 @@
   margin-left: 10px;
   margin-right: 10px;
   /* background-color: rgba(25,25,25,.5); */
-  background-color: rgba(65,65,45,.6);
+  /* background-color: #44967980; */
+  border: 1px solid #7DE3BF80;
 }
 
 .objectiveHighlight {
-  background-color: rgba(0,128,0,0.6);
+  background-color: #7DE3BF80;
   /* background-color: green; */
 }
+
+.objectiveHeader {
+  color: #ffffffdd;
+  margin-bottom: 15px;
+}
+
+
+/* red: A8554F */

@@ -20,7 +20,8 @@ class App extends React.Component {
       buffer: [],
       primaryObjective: primary,
       primaryObjectiveProgress: [],
-      success: false
+      success: false,
+      failure: false
     }
   }
 
@@ -131,7 +132,7 @@ class App extends React.Component {
                   value: '#ffffff'
                 },
                 line_linked: {
-                  color: '#aaaa44',
+                  color: '#3bc702',
                   width: 2
                 }
               }

@@ -17,7 +17,9 @@
   margin-left: 10px;
   margin-right: 10px;
   /* background-color: rgba(25,25,25,.5); */
-  background-color: rgba(65,65,45,0.8);
+  /* background-color: #44967980; */
+  border: 10px double #44967940;
+  border-top: none;
 
 }
 

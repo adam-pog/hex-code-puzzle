@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ffffffdd;
 }
 
 .board {
@@ -23,7 +23,7 @@
 }
 
 .table {
-  background-color: rgba(70,70,55,.5);
+  background-color: #11111180;
 }
 
 p {
@@ -77,14 +77,13 @@ p {
 }
 
 .terminate {
-  animation: terminate 0.5s;
+  animation: terminate 0.2s;
   animation-fill-mode: forwards;
 }
 
 @keyframes terminate {
   0% {transform: scaleY(1)}
   100% {
-    transform: scaleY(0);
-    display: none;
+    transform: scaleY(0)
   }
 }
