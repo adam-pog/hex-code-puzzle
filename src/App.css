@@ -24,6 +24,8 @@
 
 .table {
   background-color: #11111180;
+  border-radius: 10px;
+  box-shadow: 15px 15px 10px rgba(0,0,0,0.5);
 }
 
 p {

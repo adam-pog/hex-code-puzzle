@@ -20,7 +20,8 @@
   /* background-color: #44967980; */
   border: 10px double #44967940;
   border-top: none;
-
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
 }
 
 .blink {

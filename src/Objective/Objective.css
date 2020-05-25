@@ -15,13 +15,15 @@
   padding-right: 40px;
   margin-left: 10px;
   margin-right: 10px;
+  border-radius: 10px;
   /* background-color: rgba(25,25,25,.5); */
   /* background-color: #44967980; */
   border: 1px solid #7DE3BF80;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
 }
 
 .objectiveHighlight {
-  background-color: #7DE3BF80;
+  background-color: #3bc70270;
   /* background-color: green; */
 }
 
