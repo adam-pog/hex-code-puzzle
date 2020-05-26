@@ -4,7 +4,7 @@ import './Objective.css';
 function Objective(props) {
   return (
     <div>
-      <p className='objectiveHeader'>Primary Access</p>
+      <h3 className='objectiveHeader'>Primary Access</h3>
       <div className="Objective">
         {
           props.objective.map((value,i) => {

@@ -4,6 +4,7 @@ import Buffer from './Buffer/Buffer'
 import Objective from './Objective/Objective'
 import Particles from 'react-particles-js';
 import config from './config'
+import Subroutines from './Subroutines/Subroutines'
 import './App.scss';
 
 class App extends React.Component {
@@ -12,7 +13,6 @@ class App extends React.Component {
   initialState() {
     const board = this.generateBoard();
     const primary = this.generatePrimaryObjective(board);
-
     return {
       board: board,
       highlightRow: 0,
@@ -20,6 +20,8 @@ class App extends React.Component {
       buffer: [],
       primaryObjective: primary,
       primaryObjectiveProgress: [],
+      subroutines: this.generateSubroutines(board),
+      subroutinesProgress: [[], [], [], []],
       success: false,
       failure: false
     }
@@ -47,7 +49,7 @@ class App extends React.Component {
   }
 
   generatePrimaryObjective(board) {
-    let availableIndices = Array(5).fill().map((_, i) => (i))
+    let availableIndices = Array(config.rows).fill().map((_, i) => (i))
     const column = this.randomIndex()
     const row1 = this.randomIndex()
 
@@ -66,12 +68,27 @@ class App extends React.Component {
     ]
   }
 
+  generateSubroutines(board) {
+    return Array(4).fill().map(() => {
+      let subroutineLength = Math.ceil(Math.random() * 3) + 1
+
+      return Array(subroutineLength).fill().map(() => (
+        board[this.randomIndex()][this.randomIndex()]
+      ))
+    })
+  }
+
   hexClick(row, col) {
     const board = this.state.board.slice();
     const buffer = this.state.buffer.slice();
     const selection = board[row][col];
     const [highlightRow, highlightCol] = this.refreshHighlights(row, col)
-    let primaryObjectiveProgress = this.updatePrimaryObjectiveProgress(selection)
+    let primaryObjectiveProgress = this.calcObjectiveProgress(
+      selection,
+      this.state.primaryObjectiveProgress,
+      this.state.primaryObjective
+    )
+
     let success = primaryObjectiveProgress.length ===
       this.state.primaryObjective.length
 
@@ -81,7 +98,8 @@ class App extends React.Component {
     this.setState({
       board, highlightRow, highlightCol, buffer, primaryObjectiveProgress,
       success,
-      failure: !success && buffer.length === config.bufferLength
+      failure: !success && buffer.length === config.bufferLength,
+      subroutinesProgress: this.calcSubroutineProgress(selection)
     })
   }
 
@@ -94,20 +112,28 @@ class App extends React.Component {
   }
 
 
-  updatePrimaryObjectiveProgress(selection) {
-    let primaryObjectiveProgress = this.state.primaryObjectiveProgress.slice()
-    const currentGoal = this.state.primaryObjective[
-      this.state.primaryObjectiveProgress.length
-    ];
+  calcObjectiveProgress(selection, progress, objective) {
+    let primaryObjectiveProgress = progress.slice()
+    const currentGoal = objective[primaryObjectiveProgress.length];
 
     if (selection === currentGoal) {
       primaryObjectiveProgress.push(selection)
     }
-    else if(selection !== this.state.primaryObjective[0]) {
+    else if(selection !== objective[0] && progress.length !== objective.length) {
       primaryObjectiveProgress = []
     }
 
     return primaryObjectiveProgress
+  }
+
+  calcSubroutineProgress(selection) {
+    return this.state.subroutinesProgress.map((subroutine, i) => (
+      this.calcObjectiveProgress(
+        selection,
+        subroutine,
+        this.state.subroutines[i]
+      )
+    ))
   }
 
   randomIndex() {
@@ -144,7 +170,7 @@ class App extends React.Component {
         </div>
         <div className="App">
           <div className="board">
-            <div className='primaryObjective'>
+            <div className='objectives'>
               <Objective
                 objective={this.state.primaryObjective}
                 progress={this.state.primaryObjectiveProgress}
@@ -173,6 +199,7 @@ class App extends React.Component {
                 }
               </tbody>
             </table>
+
             {
               this.state.success &&
               <h1 className='successText glitch terminateText' data-text="ACCESS GRANTED">
@@ -201,6 +228,13 @@ class App extends React.Component {
             >
             </Buffer>
           </div>
+
+          <Subroutines
+            className='subroutineObjectives'
+            subroutines={this.state.subroutines}
+            subroutinesProgress={this.state.subroutinesProgress}
+            terminate={this.terminate()}
+          />
         </div>
       </div>
     )

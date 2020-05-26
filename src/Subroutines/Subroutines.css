@@ -1,0 +1,56 @@
+.Subroutines {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: center;
+}
+
+.subroutinesContainer {
+  /* border: 1px solid #7DE3BF80; */
+  /* box-shadow: 10px 10px 10px rgba(0,0,0,0.5); */
+  padding: 10px;
+}
+
+.subroutineHeader {
+  color: #ffffffdd;
+  margin-bottom: 5px;
+}
+
+.subroutine {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid #7DE3BF80;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  margin: 10px;
+  padding: 5px;
+  flex-direction: column;
+  align-items: left;
+}
+
+.subroutineValues {
+  display: flex;
+  flex-direction: row;
+}
+
+.subroutineObjectiveHighlight {
+  background-color: #3bc70270;
+  /* background-color: green; */
+}
+
+.subroutineTextContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 25px;
+  padding: 10px;
+  font-size: 25px;
+  margin: 5px;
+  border-radius: 10px;
+  /* background-color: rgba(25,25,25,.5); */
+  /* background-color: #44967980; */
+  border: 1px solid #7DE3BF80;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+/* red: A8554F */
