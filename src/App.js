@@ -152,7 +152,7 @@ class App extends React.Component {
             {
               particles: {
                 number: {
-                  value: 75,
+                  value: 100,
                   density: {
                     enable: true
                   }
@@ -174,6 +174,8 @@ class App extends React.Component {
               <Objective
                 objective={this.state.primaryObjective}
                 progress={this.state.primaryObjectiveProgress}
+                failed={this.state.failure}
+                success={this.state.success}
                 >
               </Objective>
             </div>

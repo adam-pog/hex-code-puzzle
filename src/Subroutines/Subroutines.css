@@ -25,6 +25,17 @@
   padding: 5px;
   flex-direction: column;
   align-items: left;
+  animation: subroutineBoot 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.subroutineNoAnimation {
+  animation: none;
+}
+
+@keyframes subroutineBoot {
+  0% {transform: scaleX(0)}
+  100% { transform: scaleX(1) }
 }
 
 .subroutineValues {
@@ -51,6 +62,16 @@
   /* background-color: #44967980; */
   border: 1px solid #7DE3BF80;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+.subroutineTerminate {
+  animation: subroutineTerminate 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes subroutineTerminate {
+  0% {transform: scaleX(1)}
+  100% { transform: scaleX(0) }
 }
 
 /* red: A8554F */

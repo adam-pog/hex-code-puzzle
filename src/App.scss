@@ -56,26 +56,6 @@ p {
   margin-bottom: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .objectives {
   margin-bottom: 80px;
 }
@@ -102,7 +82,8 @@ p {
   border-radius: 10px;
   outline: none;
   position: absolute;
-  bottom: 10%;
+  bottom: 15%;
+  animation: slowAppear 2s;
 }
 
 .reboot:hover{
@@ -115,7 +96,7 @@ p {
   align-items: center;
   position: absolute;
   top: 46%;
-  animation: success 0.5s;
+  animation: slowAppear 1s;
   animation-fill-mode: forwards;
 }
 
@@ -127,7 +108,7 @@ p {
   color: #A8554F40
 }
 
-@keyframes success {
+@keyframes slowAppear {
   0% {opacity: 0}
   50% {opacity: 0}
   100% {opacity: 1 }

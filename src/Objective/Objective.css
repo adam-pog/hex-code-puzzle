@@ -3,7 +3,19 @@
   flex-direction: row;
   align-items: center;
   text-align: center;
+  animation: objectiveBoot 0.5s;
+  animation-fill-mode: forwards;
 }
+
+@keyframes objectiveBoot {
+  0% {transform: scaleY(0)}
+  100% { transform: scaleY(1) }
+}
+
+.noAnimation {
+  animation: none;
+}
+
 
 .ObjectiveTextContainer {
   display: flex;
@@ -24,7 +36,6 @@
 
 .objectiveHighlight {
   background-color: #3bc70270;
-  /* background-color: green; */
 }
 
 .objectiveHeader {
@@ -32,5 +43,9 @@
   margin-bottom: 15px;
 }
 
+.objectiveFailed {
+  background-color: #A8554F80;
+  border: 1px solid #A8554F80;
+}
 
 /* red: A8554F */
