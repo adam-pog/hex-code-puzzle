@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/adam-pog/hex-code-puzzle/static/css/main.cf8bc500.chunk.css",
+    "main.js": "/adam-pog/hex-code-puzzle/static/js/main.b4f7952c.chunk.js",
+    "main.js.map": "/adam-pog/hex-code-puzzle/static/js/main.b4f7952c.chunk.js.map",
+    "runtime-main.js": "/adam-pog/hex-code-puzzle/static/js/runtime-main.a4059bcd.js",
+    "runtime-main.js.map": "/adam-pog/hex-code-puzzle/static/js/runtime-main.a4059bcd.js.map",
+    "static/js/2.5c01057d.chunk.js": "/adam-pog/hex-code-puzzle/static/js/2.5c01057d.chunk.js",
+    "static/js/2.5c01057d.chunk.js.map": "/adam-pog/hex-code-puzzle/static/js/2.5c01057d.chunk.js.map",
+    "index.html": "/adam-pog/hex-code-puzzle/index.html",
+    "precache-manifest.8659c855d6bd2f70de6ebf44c26656f7.js": "/adam-pog/hex-code-puzzle/precache-manifest.8659c855d6bd2f70de6ebf44c26656f7.js",
+    "service-worker.js": "/adam-pog/hex-code-puzzle/service-worker.js",
+    "static/css/main.cf8bc500.chunk.css.map": "/adam-pog/hex-code-puzzle/static/css/main.cf8bc500.chunk.css.map",
+    "static/js/2.5c01057d.chunk.js.LICENSE.txt": "/adam-pog/hex-code-puzzle/static/js/2.5c01057d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4059bcd.js",
+    "static/js/2.5c01057d.chunk.js",
+    "static/css/main.cf8bc500.chunk.css",
+    "static/js/main.b4f7952c.chunk.js"
+  ]
+}
