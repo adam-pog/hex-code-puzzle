@@ -166,6 +166,16 @@ class App extends React.Component {
             }
           }
         }/>
+        <div className='app-objectives'>
+          <Objective
+            objective={this.state.primaryObjective}
+            progress={this.state.primaryObjectiveProgress}
+            failed={this.state.failure}
+            success={this.state.success}
+          />
+        </div>
+
+
         <div className="board">
           <table className={'table onBoot ' + (this.terminate() ? 'terminate' : '')}>
             <tbody>
@@ -213,7 +223,9 @@ class App extends React.Component {
           <Buffer
             buffer={this.state.buffer}
             bufferLength={config.bufferLength}
-            className={(this.terminate() ? 'terminate-buffer' : '')}
+            className={
+              'app-buffer ' + (this.terminate() ? 'terminate-buffer' : '')
+            }
           />
         </div>
       </div>

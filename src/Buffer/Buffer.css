@@ -4,7 +4,7 @@
   align-items: center;
   text-align: center;
   width: 100%;
-  margin-top: 5%;
+  margin-top: 6%;
   max-width: 780px;
 }
 
@@ -30,6 +30,10 @@
   .bufferText {
     border: 3px double #44967960;
     border-top: none;
+  }
+
+  .Buffer {
+    margin-top: 10%;
   }
 }
 
