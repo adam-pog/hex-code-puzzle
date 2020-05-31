@@ -1,18 +1,15 @@
 .App {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  min-height: 100vh;
   display: flex;
   flex-direction: row;
+  text-align: center;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #ffffffdd;
   cursor: default;
   user-select: none;
-
+  height: 100%;
+  width: 100%;
 }
 
 .board {
@@ -21,11 +18,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  /* background-color: rgba(70,70,45,.7); */
+  max-width: 600px;
+  width: 80%;
 }
 
+
 .table {
+  width: 100%;
+  height: 100%;
   background-color: #11111180;
   border-radius: 10px;
   box-shadow: 15px 15px 10px rgba(0,0,0,0.5);
@@ -62,11 +62,10 @@ p {
 
 #tsparticles {
   z-index: -1;
-  position:absolute;
-  width: 100%;
-  height: 100%;
   background-color: #171b23;
-  position: fixed;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .video {
