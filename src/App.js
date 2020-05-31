@@ -209,6 +209,12 @@ class App extends React.Component {
               Reboot
             </h3>
           }
+
+          <Buffer
+            buffer={this.state.buffer}
+            bufferLength={config.bufferLength}
+            className={(this.terminate() ? 'terminate-buffer' : '')}
+          />
         </div>
       </div>
     )

@@ -18,17 +18,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 600px;
-  width: 80%;
+  width: 100%;
+  height: 90%
 }
 
-
 .table {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  max-height: 249px;
+  max-width: 600px;
   background-color: #11111180;
   border-radius: 10px;
   box-shadow: 15px 15px 10px rgba(0,0,0,0.5);
+  max-height: 249px;
 }
 
 .onBoot {

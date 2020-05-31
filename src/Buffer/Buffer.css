@@ -3,25 +3,34 @@
   flex-direction: row;
   align-items: center;
   text-align: center;
-  margin-top: 40px;
+  width: 100%;
+  margin-top: 5%;
+  max-width: 780px;
 }
 
 .bufferText {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+  width: 20%;
+  height: 80%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
   /* background-color: rgba(25,25,25,.5); */
   /* background-color: #44967980; */
   border: 10px double #44967960;
   border-top: none;
   border-radius: 10px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+@media only screen and (max-width: 590px) {
+  .bufferText {
+    border: 3px double #44967960;
+    border-top: none;
+  }
 }
 
 .blink {
