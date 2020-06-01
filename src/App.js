@@ -166,66 +166,78 @@ class App extends React.Component {
             }
           }
         }/>
-        <div className='app-objectives'>
-          <Objective
-            objective={this.state.primaryObjective}
-            progress={this.state.primaryObjectiveProgress}
-            failed={this.state.failure}
-            success={this.state.success}
-          />
-        </div>
+        <div className='centralRow'>
+          <div className='centralContainer'>
+            <div className='app-objectives'>
+              <Objective
+                objective={this.state.primaryObjective}
+                progress={this.state.primaryObjectiveProgress}
+                failed={this.state.failure}
+                success={this.state.success}
+              />
+            </div>
 
-
-        <div className="board">
-          <table className={'table onBoot ' + (this.terminate() ? 'terminate' : '')}>
-            <tbody>
-              {
-                this.state.board.map((hexValues, i) => (
-                  <HexRow
-                    hexValues={hexValues}
-                    key={i}
-                    row={i}
-                    onClick={
-                      this.terminate() ?
-                        null :
-                        (row, col) => this.hexClick(row, col)
+            <div className='centralColumn'>
+              <div className="board">
+                <table className={'table onBoot ' + (this.terminate() ? 'terminate' : '')}>
+                  <tbody>
+                    {
+                      this.state.board.map((hexValues, i) => (
+                        <HexRow
+                          hexValues={hexValues}
+                          key={i}
+                          row={i}
+                          onClick={
+                            this.terminate() ?
+                            null :
+                            (row, col) => this.hexClick(row, col)
+                          }
+                          highlightRow={this.state.highlightRow}
+                          highlightCol={this.state.highlightCol}
+                          >
+                        </HexRow>
+                      ))
                     }
-                    highlightRow={this.state.highlightRow}
-                    highlightCol={this.state.highlightCol}
-                    >
-                  </HexRow>
-                ))
-              }
-            </tbody>
-          </table>
+                  </tbody>
+                </table>
 
-          {
-            this.state.success &&
-            <h1 className='successText glitch terminateText' data-text="ACCESS GRANTED">
-              ACCESS GRANTED
-            </h1>
-          }
+                {
+                  this.state.success &&
+                  <h1 className='successText glitch terminateText' data-text="ACCESS GRANTED">
+                    ACCESS GRANTED
+                  </h1>
+                }
 
-          {
-            this.state.failure &&
-            <h1 className='failureText glitch terminateText' data-text="ACCESS DENIED">
-              ACCESS DENIED
-            </h1>
-          }
+                {
+                  this.state.failure &&
+                  <h1 className='failureText glitch terminateText' data-text="ACCESS DENIED">
+                    ACCESS DENIED
+                  </h1>
+                }
 
-          {
-            this.terminate() &&
-            <h3 className='reboot' onClick={() => this.reset()}>
-              Reboot
-            </h3>
-          }
+                {
+                  this.terminate() &&
+                  <h3 className='reboot' onClick={() => this.reset()}>
+                    Reboot
+                  </h3>
+                }
+              </div>
 
-          <Buffer
-            buffer={this.state.buffer}
-            bufferLength={config.bufferLength}
-            className={
-              'app-buffer ' + (this.terminate() ? 'terminate-buffer' : '')
-            }
+              <Buffer
+                buffer={this.state.buffer}
+                bufferLength={config.bufferLength}
+                className={
+                  'app-buffer ' + (this.terminate() ? 'terminate-buffer' : '')
+                }
+                />
+            </div>
+          </div>
+
+          <Subroutines
+            className='subroutineObjectives'
+            subroutines={this.state.subroutines}
+            subroutinesProgress={this.state.subroutinesProgress}
+            terminate={this.terminate()}
           />
         </div>
       </div>

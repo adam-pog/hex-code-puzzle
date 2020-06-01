@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 60%;
+  height: 100%;
 }
 
 .table {
@@ -29,7 +29,32 @@
   background-color: #11111180;
   border-radius: 10px;
   box-shadow: 15px 15px 10px rgba(0,0,0,0.5);
-  max-height: 249px;
+}
+
+.centralContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+.centralColumn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.centralRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .onBoot {
@@ -59,7 +84,7 @@ p {
 
 .app-objectives {
   // margin-bottom: 80px;
-  width: 90%;
+  width: 60%;
 }
 
 #tsparticles {
@@ -156,7 +181,7 @@ p {
 }
 
 @media only screen and (max-width: 590px) {
-  .board {
+  .centralRow {
     height: 55%;
   }
 }
@@ -169,7 +194,15 @@ p {
   }
 
   .board {
+    height: 90%;
+  }
+
+  .centralRow {
     height: 100%;
+  }
+
+  .centralColumn {
+    height: 90%;
   }
 
   p {
