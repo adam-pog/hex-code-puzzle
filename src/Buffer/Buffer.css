@@ -37,6 +37,13 @@
   }
 }
 
+@media only screen and (max-height: 500px) {
+  .bufferText {
+    border: 3px double #44967960;
+    border-top: none;
+  }
+}
+
 .blink {
   animation: blink 1.5s infinite;
 }
