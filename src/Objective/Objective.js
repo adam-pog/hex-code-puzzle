@@ -5,7 +5,7 @@ function Objective(props) {
   const animateClass = (props.failed || props.success) ? 'noAnimation' : '';
 
   return (
-    <div>
+    <div className='primaryObjective'>
       <h3 className='objectiveHeader'>Primary Access</h3>
       <div className={"Objective " + animateClass}>
         {

@@ -5,6 +5,7 @@ import Objective from './Objective/Objective'
 import Particles from 'react-particles-js';
 import config from './config'
 import Subroutines from './Subroutines/Subroutines'
+import MediaQuery from 'react-responsive'
 import './App.scss';
 
 class App extends React.Component {
@@ -168,13 +169,22 @@ class App extends React.Component {
         }/>
         <div className='centralRow'>
           <div className='centralContainer'>
-            <div className='app-objectives'>
+            <div className='objectiveRow'>
               <Objective
                 objective={this.state.primaryObjective}
                 progress={this.state.primaryObjectiveProgress}
                 failed={this.state.failure}
                 success={this.state.success}
               />
+
+            <MediaQuery maxWidth={590} >
+                <Subroutines
+                  className='subroutineObjectives'
+                  subroutines={this.state.subroutines}
+                  subroutinesProgress={this.state.subroutinesProgress}
+                  terminate={this.terminate()}
+                />
+              </MediaQuery>
             </div>
 
             <div className='centralColumn'>
@@ -232,13 +242,16 @@ class App extends React.Component {
                 />
             </div>
           </div>
-
-          <Subroutines
-            className='subroutineObjectives'
-            subroutines={this.state.subroutines}
-            subroutinesProgress={this.state.subroutinesProgress}
-            terminate={this.terminate()}
-          />
+          <MediaQuery minWidth={590} >
+            <div className='objectiveColumn'>
+              <Subroutines
+                className='subroutineObjectives'
+                subroutines={this.state.subroutines}
+                subroutinesProgress={this.state.subroutinesProgress}
+                terminate={this.terminate()}
+                />
+            </div>
+          </MediaQuery>
         </div>
       </div>
     )

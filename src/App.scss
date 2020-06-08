@@ -42,7 +42,7 @@
 
 .centralColumn {
   width: 100%;
-  height: 100%;
+  height: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,8 +53,15 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
+}
+
+.objectiveColumn {
+  display: flex;
+  width: 30%;
+  align-items: flex-start;
 }
 
 .onBoot {
@@ -82,9 +89,11 @@ p {
   margin-bottom: 10px;
 }
 
-.app-objectives {
+.objectiveRow {
   // margin-bottom: 80px;
-  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #tsparticles {
@@ -175,14 +184,38 @@ p {
 }
 
 @media only screen and (max-height: 500px) {
-  .app-objectives {
+  .objectiveRow {
     width: 40%;
   }
 }
 
 @media only screen and (max-width: 590px) {
+  .Subroutines {
+    height: 70%;
+  }
+
   .centralRow {
-    height: 55%;
+    align-items: flex-end;
+    height: 95%;
+  }
+
+  .objectiveRow {
+    width: 100%;
+    height: 45%;
+    align-items: flex-end;
+  }
+
+  .centralContainer {
+    width: 90%;
+    height: 100%;
+  }
+
+  .subroutineObjectives {
+    width: 50%;
+    height: 100%;
+    justify-content: flex-start;
+    // align-items: center;
+    margin-left: 5%;
   }
 }
 

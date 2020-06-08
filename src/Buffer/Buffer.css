@@ -25,12 +25,14 @@
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
 }
 
-@media only screen and (max-width: 590px) {
+@media only screen and (max-width: 1090px) {
   .bufferText {
     border: 3px double #44967960;
     border-top: none;
   }
+}
 
+@media only screen and (max-width: 590px) {
   .Buffer {
     margin-top: 10%;
   }
