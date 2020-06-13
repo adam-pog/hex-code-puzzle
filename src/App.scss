@@ -61,7 +61,7 @@
 
 .objectiveColumn {
   display: flex;
-  width: 30%;
+  width: 20%;
   align-items: flex-start;
 }
 
@@ -188,7 +188,18 @@ p {
   .objectiveRow {
     width: 40%;
   }
+
+  .objectiveColumn {
+    width: 30%;
+  }
 }
+
+@media only screen and (max-width: 1030px) {
+  .objectiveColumn {
+    width: 30%;
+  }
+}
+
 
 @media only screen and (max-width: 590px) {
   .Subroutines {
