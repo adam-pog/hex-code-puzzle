@@ -118,7 +118,7 @@ p {
   border-radius: 10px;
   outline: none;
   position: absolute;
-  bottom: 15%;
+  bottom: 5%;
   animation: slowAppear 2s;
 }
 
@@ -166,7 +166,7 @@ p {
   display: flex;
   left: 2px;
   align-items: center;
-  width: 1000px;
+  width: 100%;
   content: attr(data-text);
   overflow: hidden;
   position: absolute;
@@ -177,7 +177,7 @@ p {
   display: flex;
   left: -2px;
   align-items: center;
-  width: 1000px;
+  width: 100%;
   content: attr(data-text);
   position: absolute;
   overflow: hidden;
