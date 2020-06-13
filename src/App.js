@@ -152,7 +152,7 @@ class App extends React.Component {
           {
             particles: {
               number: {
-                value: 10,
+                value: 100,
                 density: {
                   enable: true
                 }
