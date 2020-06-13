@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/hex-code-puzzle/static/css/main.9b5c3bd0.chunk.css",
-    "main.js": "/hex-code-puzzle/static/js/main.b4f7952c.chunk.js",
-    "main.js.map": "/hex-code-puzzle/static/js/main.b4f7952c.chunk.js.map",
-    "runtime-main.js": "/hex-code-puzzle/static/js/runtime-main.c31ddd24.js",
-    "runtime-main.js.map": "/hex-code-puzzle/static/js/runtime-main.c31ddd24.js.map",
-    "static/js/2.5c01057d.chunk.js": "/hex-code-puzzle/static/js/2.5c01057d.chunk.js",
-    "static/js/2.5c01057d.chunk.js.map": "/hex-code-puzzle/static/js/2.5c01057d.chunk.js.map",
-    "index.html": "/hex-code-puzzle/index.html",
-    "precache-manifest.43c135d23ead5b302d7fea32bb1ebc92.js": "/hex-code-puzzle/precache-manifest.43c135d23ead5b302d7fea32bb1ebc92.js",
-    "service-worker.js": "/hex-code-puzzle/service-worker.js",
-    "static/css/main.9b5c3bd0.chunk.css.map": "/hex-code-puzzle/static/css/main.9b5c3bd0.chunk.css.map",
-    "static/js/2.5c01057d.chunk.js.LICENSE.txt": "/hex-code-puzzle/static/js/2.5c01057d.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.86e20c9f.chunk.css",
+    "main.js": "/static/js/main.206448c6.chunk.js",
+    "main.js.map": "/static/js/main.206448c6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8f62ed7f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8f62ed7f.js.map",
+    "static/js/2.57d7e05f.chunk.js": "/static/js/2.57d7e05f.chunk.js",
+    "static/js/2.57d7e05f.chunk.js.map": "/static/js/2.57d7e05f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.0490a961a6a3e26677a393f5afc9df03.js": "/precache-manifest.0490a961a6a3e26677a393f5afc9df03.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.86e20c9f.chunk.css.map": "/static/css/main.86e20c9f.chunk.css.map",
+    "static/js/2.57d7e05f.chunk.js.LICENSE.txt": "/static/js/2.57d7e05f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c31ddd24.js",
-    "static/js/2.5c01057d.chunk.js",
-    "static/css/main.9b5c3bd0.chunk.css",
-    "static/js/main.b4f7952c.chunk.js"
+    "static/js/runtime-main.8f62ed7f.js",
+    "static/js/2.57d7e05f.chunk.js",
+    "static/css/main.86e20c9f.chunk.css",
+    "static/js/main.206448c6.chunk.js"
   ]
 }
