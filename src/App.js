@@ -5,6 +5,7 @@ import Objective from './Objective/Objective'
 import Particles from 'react-particles-js';
 import config from './config'
 import Subroutines from './Subroutines/Subroutines'
+import MediaQuery from 'react-responsive'
 import './App.scss';
 
 class App extends React.Component {
@@ -146,97 +147,111 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className='background'>
-          <Particles params={
-            {
-              particles: {
-                number: {
-                  value: 100,
-                  density: {
-                    enable: true
-                  }
-                },
-                color: {
-                  value: '#ffffff'
-                },
-                line_linked: {
-                  color: '#3bc702',
-                  width: 2
+      <div className="App">
+        <Particles params={
+          {
+            particles: {
+              number: {
+                value: 100,
+                density: {
+                  enable: true
                 }
+              },
+              color: {
+                value: '#ffffff'
+              },
+              line_linked: {
+                color: '#3bc702',
+                width: 2
               }
             }
-          }/>
-        </div>
-        <div className="App">
-          <div className="board">
-            <div className='objectives'>
+          }
+        }/>
+        <div className='centralRow'>
+          <div className='centralContainer'>
+            <div className='objectiveRow'>
               <Objective
                 objective={this.state.primaryObjective}
                 progress={this.state.primaryObjectiveProgress}
                 failed={this.state.failure}
                 success={this.state.success}
-                >
-              </Objective>
+              />
+
+            <MediaQuery maxWidth={590} >
+                <Subroutines
+                  className='subroutineObjectives'
+                  subroutines={this.state.subroutines}
+                  subroutinesProgress={this.state.subroutinesProgress}
+                  terminate={this.terminate()}
+                />
+              </MediaQuery>
             </div>
 
-            <table className={'table onBoot ' + (this.terminate() ? 'terminate' : '')}>
-              <tbody>
+            <div className='centralColumn'>
+              <div className="board">
+                <table className={'table onBoot ' + (this.terminate() ? 'terminate' : '')}>
+                  <tbody>
+                    {
+                      this.state.board.map((hexValues, i) => (
+                        <HexRow
+                          hexValues={hexValues}
+                          key={i}
+                          row={i}
+                          onClick={
+                            this.terminate() ?
+                            null :
+                            (row, col) => this.hexClick(row, col)
+                          }
+                          highlightRow={this.state.highlightRow}
+                          highlightCol={this.state.highlightCol}
+                          >
+                        </HexRow>
+                      ))
+                    }
+                  </tbody>
+                </table>
+
                 {
-                  this.state.board.map((hexValues, i) => (
-                    <HexRow
-                      hexValues={hexValues}
-                      key={i}
-                      row={i}
-                      onClick={
-                        this.terminate() ?
-                          null :
-                          (row, col) => this.hexClick(row, col)
-                      }
-                      highlightRow={this.state.highlightRow}
-                      highlightCol={this.state.highlightCol}
-                      >
-                    </HexRow>
-                  ))
+                  this.state.success &&
+                  <h1 className='successText glitch terminateText' data-text="ACCESS GRANTED">
+                    ACCESS GRANTED
+                  </h1>
                 }
-              </tbody>
-            </table>
 
-            {
-              this.state.success &&
-              <h1 className='successText glitch terminateText' data-text="ACCESS GRANTED">
-                ACCESS GRANTED
-              </h1>
-            }
+                {
+                  this.state.failure &&
+                  <h1 className='failureText glitch terminateText' data-text="ACCESS DENIED">
+                    ACCESS DENIED
+                  </h1>
+                }
 
-            {
-              this.state.failure &&
-              <h1 className='failureText glitch terminateText' data-text="ACCESS DENIED">
-                ACCESS DENIED
-              </h1>
-            }
+                {
+                  this.terminate() &&
+                  <h3 className='reboot' onClick={() => this.reset()}>
+                    Reboot
+                  </h3>
+                }
+              </div>
 
-            {
-              this.terminate() &&
-              <h3 className='reboot' onClick={() => this.reset()}>
-                Reboot
-              </h3>
-            }
-
-            <Buffer
-              buffer={this.state.buffer}
-              size={config.bufferLength}
-              className={(this.terminate() ? 'terminate-buffer' : '')}
-            >
-            </Buffer>
+              <Buffer
+                buffer={this.state.buffer}
+                bufferLength={config.bufferLength}
+                className={
+                  'app-buffer ' + (this.terminate() ? 'terminate-buffer' : '')
+                }
+                />
+            </div>
           </div>
-
-          <Subroutines
-            className='subroutineObjectives'
-            subroutines={this.state.subroutines}
-            subroutinesProgress={this.state.subroutinesProgress}
-            terminate={this.terminate()}
-          />
+          <MediaQuery minWidth={590} >
+            <div className='objectiveColumn'>
+              <Subroutines
+                className='subroutineObjectives'
+                subroutines={this.state.subroutines}
+                subroutinesProgress={this.state.subroutinesProgress}
+                terminate={this.terminate()}
+                />
+            </div>
+          </MediaQuery>
         </div>
       </div>
     )

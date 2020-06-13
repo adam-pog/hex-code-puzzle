@@ -1,18 +1,15 @@
 .App {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #ffffffdd;
   cursor: default;
   user-select: none;
-
+  height: 100%;
+  width: 100%;
 }
 
 .board {
@@ -21,14 +18,51 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  /* background-color: rgba(70,70,45,.7); */
+  width: 100%;
+  height: 100%;
 }
 
 .table {
+  width: 90%;
+  max-height: 249px;
+  max-width: 600px;
   background-color: #11111180;
   border-radius: 10px;
   box-shadow: 15px 15px 10px rgba(0,0,0,0.5);
+}
+
+.centralContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+}
+
+.centralColumn {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.centralRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.objectiveColumn {
+  display: flex;
+  width: 20%;
+  align-items: flex-start;
 }
 
 .onBoot {
@@ -56,17 +90,19 @@ p {
   margin-bottom: 10px;
 }
 
-.objectives {
-  margin-bottom: 80px;
+.objectiveRow {
+  // margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #tsparticles {
   z-index: -1;
-  position:absolute;
-  width: 100%;
-  height: 100%;
   background-color: #171b23;
-  position: fixed;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .video {
@@ -82,7 +118,7 @@ p {
   border-radius: 10px;
   outline: none;
   position: absolute;
-  bottom: 15%;
+  bottom: 5%;
   animation: slowAppear 2s;
 }
 
@@ -130,7 +166,7 @@ p {
   display: flex;
   left: 2px;
   align-items: center;
-  width: 1000px;
+  width: 100%;
   content: attr(data-text);
   overflow: hidden;
   position: absolute;
@@ -141,9 +177,82 @@ p {
   display: flex;
   left: -2px;
   align-items: center;
-  width: 1000px;
+  width: 100%;
   content: attr(data-text);
   position: absolute;
   overflow: hidden;
   animation: noise-anim 15s infinite linear alternate-reverse;
+}
+
+@media only screen and (max-height: 500px) {
+  .objectiveRow {
+    width: 40%;
+  }
+
+  .objectiveColumn {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  .objectiveColumn {
+    width: 30%;
+  }
+}
+
+
+@media only screen and (max-width: 590px) {
+  .Subroutines {
+    height: 70%;
+  }
+
+  .centralRow {
+    align-items: flex-end;
+    height: 95%;
+    max-height: 600px;
+  }
+
+  .objectiveRow {
+    width: 100%;
+    height: 45%;
+    align-items: flex-end;
+  }
+
+  .centralContainer {
+    width: 90%;
+    height: 100%;
+  }
+
+  .subroutineObjectives {
+    width: 50%;
+    height: 100%;
+    justify-content: flex-start;
+    // align-items: center;
+    margin-left: 5%;
+  }
+}
+
+
+@media only screen and (max-height: 500px) {
+  .App {
+    flex-direction: row-reverse;
+    align-items: baseline;
+  }
+
+  .board {
+    height: 90%;
+  }
+
+  .centralRow {
+    height: 100%;
+  }
+
+  .centralColumn {
+    height: 90%;
+  }
+
+  p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 }

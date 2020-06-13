@@ -3,8 +3,24 @@
   flex-direction: row;
   align-items: center;
   text-align: center;
+  justify-content: center;
   animation: objectiveBoot 0.5s;
   animation-fill-mode: forwards;
+  margin-bottom: 3%;
+  width: 100%;
+}
+
+.primaryObjective {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+@media only screen and (max-width: 590px) {
+  .Objective {
+    margin-bottom: 10%;
+  }
 }
 
 @keyframes objectiveBoot {
@@ -18,20 +34,32 @@
 
 
 .ObjectiveTextContainer {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 50px;
-  padding-left: 40px;
-  padding-right: 40px;
-  margin-left: 10px;
-  margin-right: 10px;
+  height: 100%;
+  width: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
   border-radius: 10px;
-  /* background-color: rgba(25,25,25,.5); */
-  /* background-color: #44967980; */
+  max-width: 117px;
+  max-height: 50px;
   border: 1px solid #7DE3BF80;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+@media only screen and (max-width: 590px) {
+  .ObjectiveTextContainer {
+    padding-left: 0;
+    padding-right: 0;
+    height: 80%;
+    width: 40%;
+  }
+
+  .objectiveHeader {
+    font-size: 20px;
+  }
 }
 
 .objectiveHighlight {

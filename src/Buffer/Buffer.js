@@ -5,7 +5,7 @@ function Buffer(props) {
   return (
     <div className="Buffer">
       {
-        Array(props.size).fill().map((_,i) => {
+        Array(props.bufferLength).fill().map((_,i) => {
             return(
               <div className={"bufferText onBoot-buffer " +  props.className}key={i}>
                 {
